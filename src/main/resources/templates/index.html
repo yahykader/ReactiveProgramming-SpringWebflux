@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.4.0/css/bootstrap.min.css"/>
+</head>
+<body>
+<p></p>
+
+<div class="container">
+ <div> Listes Sociétes </div>
+    <table class="table table-responsive">
+
+        <tr>
+            <th>ID</th><th>Societe</th><th>Prix</th>
+        </tr>
+        <!--/*@thymesVar id="societe" type="java.util.List<com.greta.reactive.entities>"*/-->
+        <tr th:each="s:${societe}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.price}"></td>
+            <td>
+                <button class="btn btn-success" th:attr="onclick=|onConnect(this,'${s.id}')|">Transaction</button>
+            </td>
+        </tr>
+
+    </table>
+
+    <canvas id="chart" width="600" height="350"></canvas>
+
+</div>
+<script th:src="@{/smoothie/smoothie.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+
+</body>
+</html>
